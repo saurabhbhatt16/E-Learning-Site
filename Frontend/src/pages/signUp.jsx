@@ -1,0 +1,65 @@
+import React from 'react'
+import logo from "../assets/logo.jpg"
+
+function SignUp() {
+  const newLocal = 'border-1 w-full h-8.75 border-[#e7e6e6] text-[15px] px-5'
+  return (
+    <div className='bg-[#dddbdb] w-screen h-screen flex items-center justify-center'>
+      <form className='w-[90%] md:w-200 h-150 bg-white shadow-xl rounded-2xl flex flex-col md:flex-row overflow-hidden'>
+        {/* left div */}
+        <div className='md:w-[50%] w-full h-full flex flex-col items-center justify-center gap-3'>
+          <div><h1 className='font-semibold text-[black] text-2xl'>Let's get Started</h1>
+                <h2 className='text-[#999797] text-[18px]'>Create your account</h2>
+                </div>
+                <div className='flex flex-col gap-1 w-[80%] items-start justify-center px-3'>
+                    <label htmlFor="name" className='font-semibold'>
+                        Name
+                    </label>
+                    <input id='name' type="text" className='border w-full h-8.75 border-[#e7e6e6] text-[15px] px-5'placeholder='Your name' onChange={(e)=>setName(e.target.value)} value={name} />
+                </div>
+                 <div className='flex flex-col gap-1 w-[80%] items-start justify-center px-3'>
+                    <label htmlFor="email" className='font-semibold'>
+                        Email
+                    </label>
+                    <input id='email' type="text" className={newLocal}placeholder='Your email' onChange={(e)=>setEmail(e.target.value)} value={email} />
+                </div>
+                 <div className='flex flex-col gap-1 w-[80%] items-start justify-center px-3 relative'>
+                    <label htmlFor="password" className='font-semibold'>
+                        Password
+                    </label>
+                    <input id='password' type={show?"text":"password"} className='border w-full h-8.75 border-[#e7e6e6] text-[15px] px-5' placeholder='***********' onChange={(e)=>setPassword(e.target.value)} value={password}/>
+                    {!show && <MdOutlineRemoveRedEye className='absolute w-5 h-5 cursor-pointer right-[5%] bottom-[10%]' onClick={()=>setShow(prev => !prev)}/>}
+              {show && <MdRemoveRedEye className='absolute w-5 h-5 cursor-pointer right-[5%] bottom-[10%]' onClick={()=>setShow(prev => !prev)} />}
+                </div>
+                 <div className='flex md:w-[50%] w-[70%] items-center justify-between'>
+                  <span className={`px-2.5 py-1.25 border border-[#e7e6e6] rounded-2xl  cursor-pointer ${role === 'student' ? "border-black" : "border-[#646464]"}`} onClick={()=>setRole("student")}>Student</span>
+                  <span className={`px-2.5 py-1.25 border border-[#e7e6e6] rounded-2xl  cursor-pointer ${role === 'educator' ? "border-black" : "border-[#646464]"}`}  onClick={()=>setRole("educator")}>Educator</span>
+                </div>
+                <button className='w-[80%] h-10 bg-black text-white cursor-pointer flex items-center justify-center rounded-[5px]' disabled={loading} onClick={handleSignUp}>{loading?<ClipLoader size={30} color='white' /> : "Sign Up"}</button>
+             
+
+                <div className='w-[80%] flex items-center gap-2'>
+                    <div className='w-[25%] h-[0.5px] bg-[#c4c4c4]'></div>
+                    <div className='w-[50%] text-[15px] text-[#6f6f6f] flex items-center justify-center '>Or continue with</div>
+                    <div className='w-[25%] h-[0.5px] bg-[#c4c4c4]'></div>
+                </div>
+                <div className='w-[80%] h-10 border border-[black] rounded-[5px] flex items-center justify-center  ' onClick={googleSignUp} ><img src={google} alt="" className='w-6.25' /><span className='text-[18px] text-gray-500'>google</span> 
+                </div>
+                 <div className='text-[#6f6f6f]'>Already have an account? <span className='underline underline-offset-1 text-[black]' onClick={()=>navigate("/login")}>Login</span>
+                 </div></div>
+
+
+        {/* right div */}
+        <div className='md:w-[50%] w-full h-full bg-[black] flex items-center justify-center flex-col p-6'>
+          <img src={logo} alt='logo' className='w-30 shadow-2xl' />
+          <span className='text-xl text-white gap-3'>ONLINE  LEARNING  MADE  EASY</span>
+          
+        </div>
+      </form>
+
+
+    </div>
+  )
+}
+
+export default SignUp
