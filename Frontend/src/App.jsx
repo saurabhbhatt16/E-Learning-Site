@@ -3,6 +3,9 @@ import {Route, Routes} from 'react-router-dom'
 import Home from './pages/Home'
 import SignUp from './pages/signUp'
 import Login from './pages/Login'
+export const serverUrl = "http://localhost:8000"
+import { ToastContainer } from "react-toastify"
+
 
 
 function App() {

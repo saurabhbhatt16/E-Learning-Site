@@ -1,11 +1,49 @@
-import React from 'react'
-import logo from "../assets/logo.jpg"
+import React, { useState } from 'react'
+import logo from '../assets/logo.jpg'
+import google from '../assets/google.jpg'
+import axios from 'axios'
+import { serverUrl } from '../App'
+import { MdOutlineRemoveRedEye } from "react-icons/md";
+
+import { MdRemoveRedEye } from "react-icons/md";
+import { useNavigate } from 'react-router-dom'
+import { signInWithPopup } from 'firebase/auth'
+import { auth, provider } from '../../utils/Firebase'
+import { ClipLoader } from 'react-spinners'
+import { toast } from 'react-toastify'
+import { useDispatch } from 'react-redux'
+import { setUserData } from '../redux/userSlice'
 
 function SignUp() {
-  const newLocal = 'border-1 w-full h-8.75 border-[#e7e6e6] text-[15px] px-5'
+    const [name,setName]= useState("")
+    const [email,setEmail]= useState("")
+    const [password,setPassword]= useState("")
+    const [role,setRole]= useState("student")
+    const navigate = useNavigate()
+    let [show,setShow] = useState(false)
+    const [loading,setLoading]= useState(false)
+    let dispatch = useDispatch()
+
+    const handleSignUp = async () => {
+        setLoading(true)
+        try {
+            const result = await axios.post(serverUrl + "/api/auth/signup" , {name , email , password , role} , {withCredentials:true} )
+            dispatch(setUserData(result.data))
+
+            navigate("/")
+            toast.success("SignUp Successfully")
+            setLoading(false)
+        } 
+        catch (error) {
+            console.log(error)
+            setLoading(false)
+            toast.error(error.response.data.message)
+        } 
+    } 
+  
   return (
     <div className='bg-[#dddbdb] w-screen h-screen flex items-center justify-center'>
-      <form className='w-[90%] md:w-200 h-150 bg-white shadow-xl rounded-2xl flex flex-col md:flex-row overflow-hidden'>
+      <form className='w-[90%] md:w-200 h-150 bg-white shadow-xl rounded-2xl flex' onSubmit={(e)=>e.preventDefault()}>
         {/* left div */}
         <div className='md:w-[50%] w-full h-full flex flex-col items-center justify-center gap-3'>
           <div><h1 className='font-semibold text-[black] text-2xl'>Let's get Started</h1>
@@ -43,7 +81,7 @@ function SignUp() {
                     <div className='w-[50%] text-[15px] text-[#6f6f6f] flex items-center justify-center '>Or continue with</div>
                     <div className='w-[25%] h-[0.5px] bg-[#c4c4c4]'></div>
                 </div>
-                <div className='w-[80%] h-10 border border-[black] rounded-[5px] flex items-center justify-center  ' onClick={googleSignUp} ><img src={google} alt="" className='w-6.25' /><span className='text-[18px] text-gray-500'>google</span> 
+                <div className='w-[80%] h-10 border border-[black] rounded-[5px] flex items-center justify-center  ' onClick={googleSignUp} ><img src={google} alt="" className='w-6.25' /><span className='text-[18px] text-gray-500'>oogle</span> 
                 </div>
                  <div className='text-[#6f6f6f]'>Already have an account? <span className='underline underline-offset-1 text-[black]' onClick={()=>navigate("/login")}>Login</span>
                  </div></div>
