@@ -1,0 +1,9 @@
+# Environment files
+Backend/.env
+Backend/.env.*
+Frontend/.env
+Frontend/.env.*
+
+# Keep sample env templates
+!Backend/.env.example
+!Frontend/.env.example
