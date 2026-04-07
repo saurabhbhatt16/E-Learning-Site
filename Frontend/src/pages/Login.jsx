@@ -61,9 +61,9 @@ function Login() {
             
         }
   return (
-    <div className='bg-[#dddbdb] w-[100vw] h-[100vh] flex items-center justify-center flex-col gap-3'>
+    <div className='bg-[#dddbdb] w-screen h-screen flex items-center justify-center flex-col gap-3'>
             <form className='w-[90%] md:w-200 h-150 bg-[white] shadow-xl rounded-2xl flex' onSubmit={(e)=>e.preventDefault()}>
-                <div className='md:w-[50%] w-[100%] h-[100%] flex flex-col items-center justify-center gap-4 '>
+                <div className='md:w-[50%] w-full h-full flex flex-col items-center justify-center gap-4 '>
                     <div><h1 className='font-semibold text-[black] text-2xl'>Welcome back</h1>
                     <h2 className='text-[#999797] text-[18px]'>Login to your account</h2>
                     </div>
@@ -71,18 +71,18 @@ function Login() {
                         <label htmlFor="email" className='font-semibold'>
                             Email
                         </label>
-                        <input id='email' type="text" className='border-1 w-[100%] h-[35px] border-[#e7e6e6] text-[15px] px-[20px]' placeholder='Your email' onChange={(e)=>setEmail(e.target.value)} value={email} />
+                        <input id='email' type="text" className='border w-full h-8.75 border-[#e7e6e6] text-[15px] px-5' placeholder='Your email' onChange={(e)=>setEmail(e.target.value)} value={email} />
                     </div>
                      <div className='flex flex-col gap-1 w-[85%] items-start justify-center px-3 relative'>
                         <label htmlFor="password" className='font-semibold'>
                             Password
                         </label>
-                        <input id='password' type={show?"text":"password"} className='border-1 w-[100%] h-[35px] border-[#e7e6e6] text-[15px] px-[20px]' placeholder='***********' onChange={(e)=>setPassword(e.target.value)} value={password} />
-                        {!show && <MdOutlineRemoveRedEye className='absolute w-[20px] h-[20px] cursor-pointer right-[5%] bottom-[10%]' onClick={()=>setShow(prev => !prev)}/>}
-                        {show && <MdRemoveRedEye className='absolute w-[20px] h-[20px] cursor-pointer right-[5%] bottom-[10%]' onClick={()=>setShow(prev => !prev)} />}
+                        <input id='password' type={show?"text":"password"} className='border w-full h-8.75 border-[#e7e6e6] text-[15px] px-5' placeholder='***********' onChange={(e)=>setPassword(e.target.value)} value={password} />
+                        {!show && <MdOutlineRemoveRedEye className='absolute w-5 h-5 cursor-pointer right-[5%] bottom-[10%]' onClick={()=>setShow(prev => !prev)}/>}
+                        {show && <MdRemoveRedEye className='absolute w-5 h-5 cursor-pointer right-[5%] bottom-[10%]' onClick={()=>setShow(prev => !prev)} />}
                     </div>
                      
-                    <button className='w-[80%] h-[40px] bg-black text-white cursor-pointer flex items-center justify-center rounded-[5px]' disabled={loading} onClick={handleLogin}>{loading?<ClipLoader size={30} color='white' /> : "Login"}</button>
+                    <button className='w-[80%] h-10 bg-black text-white cursor-pointer flex items-center justify-center rounded-[5px]' disabled={loading} onClick={handleLogin}>{loading?<ClipLoader size={30} color='white' /> : "Login"}</button>
                     <span className='text-[13px] cursor-pointer text-[#585757]' onClick={()=>navigate("/forgotpassword")}>Forget your password?</span>
     
                     <div className='w-[80%] flex items-center gap-2'>
@@ -91,11 +91,11 @@ function Login() {
                         <div className='w-[25%] h-[0.5px] bg-[#c4c4c4]'></div>
                     </div>
                 
-                    <div className='w-[80%] h-[40px] border-1 border-[#d3d2d2] rounded-[5px] flex items-center justify-center ' onClick={googleLogin} ><img src={google} alt="" className='w-[25px]' /><span className='text-[18px] text-gray-500'>oogle</span> </div>
+                    <div className='w-[80%] h-10 border border-[#d3d2d2] rounded-[5px] flex items-center justify-center ' onClick={googleLogin} ><img src={google} alt="" className='w-6.25' /><span className='text-[18px] text-gray-500'>oogle</span> </div>
                      <div className='text-[#6f6f6f]'>Don't have an account? <span className='underline underline-offset-1 text-[black]' onClick={()=>navigate("/signup")}>Sign up</span></div>
     
                 </div>
-                <div className='w-[50%] h-[100%] rounded-r-2xl bg-[black] md:flex items-center justify-center flex-col hidden'><img src={logo} className='w-30 shadow-2xl' alt="" />
+                <div className='w-[50%] h-full rounded-r-2xl bg-[black] md:flex items-center justify-center flex-col hidden'><img src={logo} className='w-30 shadow-2xl' alt="" />
                 <span className='text-[white] text-2xl'>ONLIN LEARNING MADE EASY</span>
                 </div>
             </form>
