@@ -7,8 +7,8 @@ import { MdOutlineRemoveRedEye } from "react-icons/md";
 
 import { MdRemoveRedEye } from "react-icons/md";
 import { useNavigate } from 'react-router-dom'
-import { signInWithPopup } from 'firebase/auth'
-import { auth, provider } from '../../utils/Firebase'
+// import { signInWithPopup } from 'firebase/auth'
+// import { auth, provider } from '../../utils/Firebase'
 import { toast } from 'react-toastify'
 import { ClipLoader } from 'react-spinners'
 import { useDispatch } from 'react-redux'
@@ -38,28 +38,30 @@ function Login() {
         }
         
     }
-     const googleLogin = async () => {
-            try {
-                const response = await signInWithPopup(auth,provider)
+    //  const googleLogin = async () => {
+    //         try {
+    //             const response = await signInWithPopup(auth,provider)
                 
-                let user = response.user
-                let name = user.displayName;
-                let email=user.email
-                let role=""
+    //             let user = response.user
+    //             let name = user.displayName;
+    //             let email=user.email
+    //             let role=""
                 
                 
-                const result = await axios.post(serverUrl + "/api/auth/googlesignup" , {name , email , role}
-                    , {withCredentials:true}
-                )
-                dispatch(setUserData(result.data))
-                navigate("/")
-                toast.success("Login Successfully")
-            } catch (error) {
-                console.log(error)
-                toast.error(error.response.data.message)
-            }
+    //             const result = await axios.post(serverUrl + "/api/auth/googlesignup" , {name , email , role}
+    //                 , {withCredentials:true}
+    //             )
+    //             dispatch(setUserData(result.data))
+    //             navigate("/")
+    //             toast.success("Login Successfully")
+    //         } catch (error) {
+    //             console.log(error)
+    //             toast.error(error.response.data.message)
+    //         }
             
-        }
+    //     }
+
+
   return (
     <div className='bg-[#dddbdb] w-screen h-screen flex items-center justify-center flex-col gap-3'>
             <form className='w-[90%] md:w-200 h-150 bg-[white] shadow-xl rounded-2xl flex' onSubmit={(e)=>e.preventDefault()}>

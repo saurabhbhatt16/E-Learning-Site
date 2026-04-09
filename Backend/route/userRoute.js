@@ -5,5 +5,6 @@ import { getCurrentUser } from "../controller/userController.js"
 const userRouter = express.Router()
 
 userRouter.get("/getcurrentuser", isAuth, getCurrentUser)
+userRouter.post("/updateprofile",isAuth,upload.single("photoUrl"),UpdateProfile)
 
 export default userRouter
