@@ -1,9 +1,83 @@
-# Environment files
-Backend/.env
-Backend/.env.*
-Frontend/.env
-Frontend/.env.*
+# ==========================================
+# Dependencies
+# ==========================================
+node_modules/
+**/node_modules/
+.pnp
+.pnp.js
 
-# Keep sample env templates
-!Backend/.env.example
-!Frontend/.env.example
+# ==========================================
+# Environment Variables & Secrets
+# ==========================================
+.env
+.env.*
+*.env
+*.env.*
+!**/.env.example
+!**/.env.template
+
+# ==========================================
+# Runtime Uploads & Public Files (Backend)
+# ==========================================
+Backend/public/*
+!Backend/public/.gitkeep
+uploads/
+temp/
+tmp/
+
+# ==========================================
+# Build & Distribution Outputs
+# ==========================================
+dist/
+dist-ssr/
+build/
+out/
+.output/
+*.tmp
+*.temp
+
+# ==========================================
+# Logs & Debugging
+# ==========================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ==========================================
+# Testing & Cache
+# ==========================================
+coverage/
+.nyc_output/
+.cache/
+.eslintcache
+
+# ==========================================
+# IDE & Editor Settings
+# ==========================================
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*~
+
+# ==========================================
+# System & OS Files
+# ==========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
