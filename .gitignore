@@ -1,8 +1,12 @@
 # ==========================================
-# Dependencies
+# Dependencies & Manifests
 # ==========================================
 node_modules/
 **/node_modules/
+package.json
+package-lock.json
+**/package.json
+**/package-lock.json
 .pnp
 .pnp.js
 
